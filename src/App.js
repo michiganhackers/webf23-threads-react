@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import Test from './Test'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <p>Hello world!! JSX!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -17,9 +19,12 @@ function App() {
         >
           Learn React
         </a>
+        1 + 1<p>{1 + 1}</p>
+        <Test text={'hello'} number={2} />
+        <Test text={'world'} number={3000} />
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
