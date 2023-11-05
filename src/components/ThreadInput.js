@@ -14,6 +14,7 @@ export default function ThreadInput({ threads, setThreads }) {
             username: 'bztravis',
             text: text,
             timestamp: Date.now(),
+            liked: false,
           }
           setThreads([...threads, newThread])
         }}

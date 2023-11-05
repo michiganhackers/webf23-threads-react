@@ -10,18 +10,21 @@ function App() {
       username: 'bztravis',
       text: "EECS, EECS, EECS at Michigan, EECS 281 is a class I'd take again",
       timestamp: Date.now(),
+      liked: false,
     },
     {
       id: 'ba688c73-5a2d-4397-b928-6dc011e5c236',
       username: 'srsawant',
       text: 'React is a perfect framework with no flaws or room for improvement!',
       timestamp: Date.now(),
+      liked: true,
     },
     {
       id: 'bb0b5d7b-5438-4756-8e1d-855e6ac95f37',
       username: 'urmom',
       text: 'Meme',
       timestamp: Date.now(),
+      liked: true,
     },
   ])
   console.log('threads', threads)
