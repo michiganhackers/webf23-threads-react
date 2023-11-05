@@ -9,6 +9,7 @@ export default function ThreadInput({ threads, setThreads }) {
       <form
         onSubmit={(e) => {
           e.preventDefault()
+          if (!text) return
           const newThread = {
             id: crypto.randomUUID(),
             username: 'bztravis',
@@ -17,6 +18,7 @@ export default function ThreadInput({ threads, setThreads }) {
             liked: false,
           }
           setThreads([...threads, newThread])
+          setText('')
         }}
       >
         <input
