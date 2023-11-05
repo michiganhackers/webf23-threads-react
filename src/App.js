@@ -1,9 +1,10 @@
 import ThreadInput from './components/ThreadInput'
 import Thread from './components/Thread'
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [username, setUsername] = useState('')
   const [threads, setThreads] = useState([
     {
       id: 'b9dea1a3-ff35-4d78-a799-8adfbd77d5ca',
@@ -27,14 +28,21 @@ function App() {
       liked: true,
     },
   ])
-  console.log('threads', threads)
+
+  useEffect(() => {
+    setUsername(prompt('Login with your username:'))
+  }, [])
 
   return (
     <div className="appContainer">
       <nav>
         <img className="logo" src="/logo.png" alt="logo" />
       </nav>
-      <ThreadInput threads={threads} setThreads={setThreads} />
+      <ThreadInput
+        threads={threads}
+        setThreads={setThreads}
+        username={username}
+      />
       <div className="feed">
         {threads.map((thread) => (
           <Thread key={thread.id} data={thread} setThreads={setThreads} />

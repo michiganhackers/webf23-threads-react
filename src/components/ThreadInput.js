@@ -1,7 +1,7 @@
 import './ThreadInput.css'
 import { useState } from 'react'
 
-export default function ThreadInput({ threads, setThreads }) {
+export default function ThreadInput({ threads, setThreads, username }) {
   const [text, setText] = useState('')
   console.log('threads', threads)
   return (
@@ -12,7 +12,7 @@ export default function ThreadInput({ threads, setThreads }) {
           if (!text) return
           const newThread = {
             id: crypto.randomUUID(),
-            username: 'bztravis',
+            username: username,
             text: text,
             timestamp: Date.now(),
             liked: false,
