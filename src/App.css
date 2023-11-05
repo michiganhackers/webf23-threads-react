@@ -4,9 +4,23 @@ body {
   display: flex;
   height: 100vh;
   justify-content: center;
-  align-items: center;
+  font-family: sans-serif;
 }
-.container {
+
+.appContainer {
   width: 512px;
   max-width: 100dvw;
+}
+
+nav {
+  padding: 24px 0;
+  top: 0;
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  background: white;
+}
+
+.logo {
+  height: 48px;
 }

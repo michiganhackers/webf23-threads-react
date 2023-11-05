@@ -1,3 +1,5 @@
+import './ThreadInput.css'
+
 export default function ThreadInput() {
-  return <div>ThreadInput</div>
+  return <div className="threadInputContainer">ThreadInput</div>
 }

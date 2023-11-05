@@ -1,3 +1,5 @@
+import './Thread.css'
+
 export default function Thread() {
-  return <div>Thread</div>
+  return <div className="threadContainer">Thread</div>
 }

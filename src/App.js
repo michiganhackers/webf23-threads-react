@@ -4,10 +4,16 @@ import './App.css'
 
 function App() {
   return (
-    <div className="container">
-      <img src="/logo.png" alt="logo" />
+    <div className="appContainer">
+      <nav>
+        <img className="logo" src="/logo.png" alt="logo" />
+      </nav>
       <ThreadInput />
-      <Thread />
+      <div className="feed">
+        <Thread />
+        <Thread />
+        <Thread />
+      </div>
     </div>
   )
 }
