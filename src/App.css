@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 512px;
+  max-width: 100dvw;
+}
