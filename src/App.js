@@ -1,9 +1,10 @@
 import ThreadInput from './components/ThreadInput'
 import Thread from './components/Thread'
 import './App.css'
+import { useState } from 'react'
 
 function App() {
-  const threads = [
+  const [threads, setThreads] = useState([
     {
       id: 0,
       username: 'bztravis',
@@ -22,7 +23,7 @@ function App() {
       text: 'Meme',
       timestamp: Date.now(),
     },
-  ]
+  ])
 
   return (
     <div className="appContainer">
@@ -32,7 +33,7 @@ function App() {
       <ThreadInput />
       <div className="feed">
         {threads.map((thread) => (
-          <Thread data={thread} />
+          <Thread data={thread} key={thread.id} />
         ))}
       </div>
     </div>
