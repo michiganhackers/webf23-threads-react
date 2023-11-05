@@ -34,7 +34,7 @@ function App() {
       <ThreadInput threads={threads} setThreads={setThreads} />
       <div className="feed">
         {threads.map((thread) => (
-          <Thread key={thread.id} data={thread} />
+          <Thread key={thread.id} data={thread} setThreads={setThreads} />
         ))}
       </div>
     </div>
