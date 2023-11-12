@@ -29,6 +29,15 @@ function App() {
     },
   ])
 
+  // get data from JSONbin.io
+  useEffect(() => {
+    const getData = async () => {
+      // get data from jsonbin
+      // set threads state to the results
+    }
+    getData()
+  })
+
   useEffect(() => {
     setUsername(prompt('Login with your username:'))
   }, [])
