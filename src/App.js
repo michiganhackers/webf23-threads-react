@@ -34,9 +34,19 @@ function App() {
     const getData = async () => {
       // get data from jsonbin
       // set threads state to the results
+      console.log('Pulling data...')
     }
     getData()
-  })
+  }, [])
+
+  // update data to JSONbin.io
+  useEffect(() => {
+    const postData = async () => {
+      // on threads state chnage, update storage in JSONbin
+      console.log('Posting data...')
+    }
+    postData()
+  }, [threads])
 
   useEffect(() => {
     setUsername(prompt('Login with your username:'))

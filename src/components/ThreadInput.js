@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function ThreadInput({ threads, setThreads, username }) {
   const [text, setText] = useState('')
-  console.log('threads', threads)
+
   return (
     <div className="threadInputContainer">
       <form
