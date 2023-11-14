@@ -1,56 +1,54 @@
-import ThreadInput from './components/ThreadInput'
-import Thread from './components/Thread'
-import './App.css'
-import { useState, useEffect } from 'react'
+import ThreadInput from "./components/ThreadInput";
+import Thread from "./components/Thread";
+import "./App.css";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
-  const [username, setUsername] = useState('')
-  const [threads, setThreads] = useState([
-    {
-      id: 'b9dea1a3-ff35-4d78-a799-8adfbd77d5ca',
-      username: 'bztravis',
-      text: "EECS, EECS, EECS at Michigan, EECS 281 is a class I'd take again",
-      timestamp: Date.now(),
-      liked: false,
-    },
-    {
-      id: 'ba688c73-5a2d-4397-b928-6dc011e5c236',
-      username: 'srsawant',
-      text: 'React is a perfect framework with no flaws or room for improvement!',
-      timestamp: Date.now(),
-      liked: true,
-    },
-    {
-      id: 'bb0b5d7b-5438-4756-8e1d-855e6ac95f37',
-      username: 'urmom',
-      text: 'Meme',
-      timestamp: Date.now(),
-      liked: true,
-    },
-  ])
+  const [username, setUsername] = useState("");
+  const [threads, setThreads] = useState([]);
+  const pageRendered = useRef(false);
 
   // get data from JSONbin.io
   useEffect(() => {
     const getData = async () => {
       // get data from jsonbin
       // set threads state to the results
-      console.log('Pulling data...')
-    }
-    getData()
-  }, [])
+      console.log("Pulling data...");
+      fetch("https://api.jsonbin.io/v3/b/65510fa80574da7622c5b73c", {
+        headers: {
+          "X-Master-Key":
+            "$2a$10$agrRs/4khXuruBXgc4S7VO/qnrB48JnzBvN1Pf51CJ.XhYdHwI4pe", // Your secret key
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => setThreads(data.record));
+    };
+    getData();
+  }, []);
 
   // update data to JSONbin.io
   useEffect(() => {
     const postData = async () => {
       // on threads state chnage, update storage in JSONbin
-      console.log('Posting data...')
+      console.log("Posting data...");
+      fetch("https://api.jsonbin.io/v3/b/65510fa80574da7622c5b73c", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": "$2a$10$agrRs/4khXuruBXgc4S7VO/qnrB48JnzBvN1Pf51CJ.XhYdHwI4pe", // Your secret key
+        },
+        body: JSON.stringify(threads),
+      })
+    };
+    if (pageRendered.current) {
+      postData();
     }
-    postData()
-  }, [threads])
+    pageRendered.current = true;
+  }, [threads]);
 
   useEffect(() => {
-    setUsername(prompt('Login with your username:'))
-  }, [])
+    setUsername(prompt("Login with your username:"));
+  }, []);
 
   return (
     <div className="appContainer">
@@ -63,12 +61,13 @@ function App() {
         username={username}
       />
       <div className="feed">
-        {threads.map((thread) => (
-          <Thread key={thread.id} data={thread} setThreads={setThreads} />
-        ))}
+        {threads &&
+          threads.map((thread) => (
+            <Thread key={thread.id} data={thread} setThreads={setThreads} />
+          ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
