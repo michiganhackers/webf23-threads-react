@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import "./ThreadInput.css";
 
-export default function ThreadInput({ threads, setThreads }) {
-    const [text, setText] = useState('')
+export default function ThreadInput({ threads, setThreads, username }) {
+  const [text, setText] = useState('')
   return (
     <div className="threadInputContainer">
       <form onSubmit={(e) => {
         e.preventDefault();
         const newThread = {
             id: crypto.randomUUID(),
-            username: 'bztravis',
+            username: username,
             text: text,
             timestamp: Date.now()
+
         }
-        setThreads([...threads, newThread])
+        setThreads([newThread, ...threads])
       }}>
         <input type="text" placeHolder="Start a thread..." name="thread" value={text} onChange={(e) => {
             setText(e.target.value)
