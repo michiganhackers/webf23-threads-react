@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import "./ThreadInput.css";
 
-export default function ThreadInput({ threads, setThreads, username }) {
+export default function ThreadInput({ threads, setThreads, username, postData }) {
   const [text, setText] = useState('')
   return (
     <div className="threadInputContainer">
@@ -15,7 +15,7 @@ export default function ThreadInput({ threads, setThreads, username }) {
           liked: false,
         }
         setThreads([newThread, ...threads])
-        console.log("setThreads already happened bro")
+        postData([newThread, ...threads])
       }}>
         <input type="text" placeholder="Start a thread..." name="thread" value={text} onChange={(e) => {
           setText(e.target.value)
