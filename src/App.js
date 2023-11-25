@@ -8,7 +8,7 @@ function App() {
   const [threads, setThreads] = useState([]);
 
   useEffect(() => {
-   setUsername(prompt('Login in with username: ')) 
+    setUsername(prompt('Login in with username: '))
   }, [])
 
   useEffect(() => {
@@ -20,11 +20,11 @@ function App() {
           "X-Master-Key": "$2a$10$agrRs/4khXuruBXgc4S7VO/qnrB48JnzBvN1Pf51CJ.XhYdHwI4pe"
         }
       })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("data", data)
-        setThreads(data.threads)
-      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("data", data)
+          setThreads(data)
+        })
     }
     getData()
   }, [])
@@ -50,7 +50,7 @@ function App() {
       <nav>
         <img className="logo" src="/logo.png" alt="logo" />
       </nav>
-      <ThreadInput threads={threads} setThreads={setThreads} username={username}/>
+      <ThreadInput threads={threads} setThreads={setThreads} username={username} />
       <div className="feed">
         {threads && threads.map((thread) => (
           <Thread key={thread.id} data={thread} setThreads={setThreads} />
